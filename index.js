@@ -8,7 +8,7 @@ require("dotenv").config();
 const Item = require("./models/item");
 
 mongoose
-	.connect(process.env.MONGODB_URI, {
+	.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/inventory", {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
@@ -24,9 +24,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-// app.listen(8080, () => {
-// 	console.log("Listening on porth 8080");
-// });
+app.listen(8080, () => {
+	console.log("Listening on porth 8080");
+});
 
 app.get("/", async (req, res) => {
 	const items = await Item.find({});
