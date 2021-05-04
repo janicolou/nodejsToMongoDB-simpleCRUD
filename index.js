@@ -24,8 +24,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-app.listen(8080, () => {
-	console.log("Listening on porth 8080");
+app.listen(process.env.PORT, () => {
+	console.log(`Listening on port ${process.env.PORT}`);
 });
 
 app.get("/", async (req, res) => {
