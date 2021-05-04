@@ -8,7 +8,7 @@ require("dotenv").config();
 const Item = require("./models/item");
 
 mongoose
-	.connect(process.env.DB_CONNECTIONSTRING, {
+	.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
