@@ -30,7 +30,7 @@ app.listen(process.env.PORT, () => {
 
 app.get("/", async (req, res) => {
 	const items = await Item.find({});
-	res.render("items/mainform", { items });
+	res.render("items/mainForm", { items });
 });
 
 app.post("/items", async (req, res) => {
