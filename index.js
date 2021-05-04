@@ -19,8 +19,6 @@ mongoose
 		console.log("Connection Error! \n" + err);
 	});
 
-const suppliers = ["Nico", "Elcid", "Jan", "Louise"];
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -32,19 +30,8 @@ app.listen(5500, () => {
 
 app.get("/", async (req, res) => {
 	const items = await Item.find({});
-	res.render("items/mainform", { items, suppliers });
+	res.render("items/mainform", { items });
 });
-
-// app.get("/items", async (req, res) => {
-// 	const items = await Item.find({});
-// 	res.render("items/index", { items });
-// });
-
-// app.post("/items", async (req, res) => {
-// 	const newItem = new Item(req.body);
-// 	await newItem.save();
-// 	res.redirect(`/items/${newItem._id}`);
-// });
 
 app.post("/items", async (req, res) => {
 	const newItem = new Item(req.body);
@@ -52,21 +39,10 @@ app.post("/items", async (req, res) => {
 	res.redirect(`/`);
 });
 
-// app.get("/items/new", (req, res) => {
-// 	res.render("items/new", { suppliers });
-// });
-
-// app.get("/items/:id", async (req, res) => {
-// 	const { id } = req.params;
-// 	const item = await Item.findById(id);
-// 	res.render("items/show", { item });
-// });
-
-// Get Page
 app.post("/items/:id/edit", async (req, res) => {
 	const { id } = req.params;
 	const item = await Item.findById(id);
-	res.render("items/edit", { item, suppliers });
+	res.render("items/edit", { item });
 });
 
 app.put("/items/:id", async (req, res) => {
@@ -82,11 +58,4 @@ app.delete("/items/:id", async (req, res) => {
 	const { id } = req.params;
 	const deletedItem = await Item.findByIdAndDelete(id);
 	res.redirect("/");
-});
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-app.get("/", async (req, res) => {
-	const items = await Item.find({});
-	res.render("items/mainForm", { items });
 });

@@ -261,10 +261,9 @@
 				class="modal fade show"
 				style="display: block; padding-right: 11px"
 			>
-			<% let temi = item; %> 
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form action="/items/<%=temi._id %>?_method=PUT" method="POST">
+						<form action="/items/<%=item._id %>?_method=PUT" method="POST">
 							<div class="modal-header">
 								<h4 class="modal-title">Edit Item</h4>
 								</button>
@@ -275,7 +274,7 @@
 									<input
 										type="text"
 										name="name"
-										value="<%=temi.name%> "
+										value="<%=item.name%>"
 										class="form-control"
 										required
 									/>
@@ -283,9 +282,9 @@
 								<div class="form-group">
 									<label>Quantity</label>
 									<input
-										type="text"
+										type="number"
 										name="quantity"
-										value="<%= temi.quantity %> "
+										value="<%= item.quantity %>"
 										class="form-control"
 										required
 									/>
@@ -293,9 +292,9 @@
 								<div class="form-group">
 									<label>Original Price</label>
 									<input
-										type="text"
+										type="number"
 										name="originalPrice"
-										value="<%= temi.originalPrice %> "
+										value="<%= item.originalPrice %>"
 										class="form-control"
 										required
 									/>
@@ -303,23 +302,12 @@
 								<div class="form-group">
 									<label>Selling Price</label>
 									<input
-										type="text"
+										type="number"
 										name="sellingPrice"
-										value="<%= temi.sellingPrice  %> "
+										value="<%= item.sellingPrice%>"
 										class="form-control"
 										required
 									/>
-								</div>
-								<div class="form-group">
-									<label>Supplier</label>
-									<select name="supplier" class="form-control">
-										<% for (let supplier of suppliers) { %>
-										<option value="<%=supplier%>">
-											<%= temi.supplier === supplier ? "selected" : "" %>
-											<%=supplier%>
-										</option>
-										<% } %>
-									</select>
 								</div>
 							</div>
 							<div class="modal-footer">

@@ -20,11 +20,6 @@ const itemSchema = new mongoose.Schema({
 		required: true,
 		min: 0,
 	},
-	supplier: {
-		type: String,
-		lowercase: true,
-		// enum: ["Nico", "Elcid", "Jan", "Louise"],
-	},
 });
 
 const Item = mongoose.model("Item", itemSchema);
