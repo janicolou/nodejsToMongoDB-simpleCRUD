@@ -24,9 +24,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-app.listen(5500, () => {
-	console.log("Listening on porth 5500");
-});
+// app.listen(8080, () => {
+// 	console.log("Listening on porth 8080");
+// });
 
 app.get("/", async (req, res) => {
 	const items = await Item.find({});
