@@ -1,12 +1,15 @@
+// Express
 const express = require("express");
 const app = express();
 const path = require("path");
+
+// Mongoose
 const mongoose = require("mongoose");
-const methodOverride = require("method-override");
-require("dotenv").config();
+const methodOverride = require("method-override"); // For PUT and DELETE methods
+require("dotenv").config(); // Dotenv for hidden connection strings
+const Item = require("./models/item"); // For importing my item model
 
-const Item = require("./models/item");
-
+// Connection
 mongoose
 	.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/inventory", {
 		useNewUrlParser: true,
